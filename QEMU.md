@@ -46,7 +46,22 @@ Debian GNU/Linux 11 raspberrypi ttyAMA0
 
 raspberrypi login:
 ```
+**Resize the image to 8G** (if you do face the following issue)
+```sh
+qemu-system-aarch64 -machine raspi3b -cpu cortex-a72 -dtb bcm2710-rpi-3-b-plus.dtb -m 1G -smp 4 -serial stdio -kernel kernel8.img -sd ./2023-12-05-raspios-bookworm-arm64.img -append "rw earlyprintk loglevel=8 console=ttyAMA0,115200 dwc_otg.lpm_enable=0 root=/dev/mmcblk0p2 rootdelay=1" -device usb-mouse -device usb-kbd -device usb-net,netdev=net0 -netdev user,id=net0,hostfwd=tcp::2222-:22
+WARNING: Image format was not specified for './2023-12-05-raspios-bookworm-arm64.img' and probing guessed raw.
+         Automatically detecting the format is dangerous for raw images, write operations on block 0 will be restricted.
+         Specify the 'raw' format explicitly to remove the restrictions.
+E:\New folder (4)\qemu\qemu-system-aarch64.exe: Invalid SD card size: 5.44 GiB
+SD card size has to be a power of 2, e.g. 8 GiB.
+You can resize disk images with 'qemu-img resize <imagefile> <new-size>'
+(note that this will lose data if you make the image smaller than it currently is).
+```
+Solution:
+```sh
+qemu-img resize ./2023-12-05-raspios-bookworm-arm64.img 8G
 
+```
 
 ## Access the Emulated Raspberry Pi
 Once the emulation is up and running, you can interact with the emulated Raspberry Pi. You have the option to connect to it using SSH or access it through the QEMU console.
