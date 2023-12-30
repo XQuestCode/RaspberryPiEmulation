@@ -21,10 +21,10 @@ Extract the image, to view two image files. *Here 0.fat has kernels, and hardwar
 ![](./images/filestructure1.png)
 Extract the highlighted files from the image. (*You may choose the raspberry you want to target.*)
 
-![](./images/filestructure1.png)
+![](./images/filestructure2.png)
 
 Following should be the final file structure.
-![](./images/filestructure1.png)
+![](./images/filestructure3.png)
 
 ## Configure QEMU
 Use the QEMU command-line interface to configure the emulation settings. Specify the Raspberry Pi model you want to emulate, allocate the amount of RAM, and set other relevant parameters. Below is an example command for emulating a Raspberry Pi 3B+:
